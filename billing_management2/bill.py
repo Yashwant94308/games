@@ -1,9 +1,11 @@
 from tkinter import *
+from variables import Variable
 
 
 class Bill_APP:
-    def __init__(self, root):
-        self.root = root
+    def __init__(self, roots, variable):
+        self.root = roots
+        self.var = variable
         self.root.geometry("1350x710+0+0")
         self.root.title("Bill Management app")
         bg_color = "#074463"
@@ -18,15 +20,18 @@ class Bill_APP:
         f1.place(x=0, y=80, relwidth=1)
         c_name = Label(f1, text="Customer name", font=("times new roman", 18, "bold"),
                        bg=bg_color, fg="white").grid(row=0, column=0, padx=20, pady=5)
-        c_text = Entry(f1, width=16, font=("arial", 15), bd=7, relief=SUNKEN).grid(row=0, column=1)
+        c_text = Entry(f1, width=16, textvariable=self.var.customer_name, font=("arial", 15), bd=7, relief=SUNKEN).grid(
+            row=0, column=1)
 
         c_phn = Label(f1, text="Phone No.", font=("times new roman", 18, "bold"),
                       bg=bg_color, fg="white").grid(row=0, column=2, padx=20, pady=5)
-        c_phn_text = Entry(f1, width=16, font=("arial", 15), bd=7, relief=SUNKEN).grid(row=0, column=3)
+        c_phn_text = Entry(f1, width=16, textvariable=self.var.customer_phone, font=("arial", 15), bd=7,
+                           relief=SUNKEN).grid(row=0, column=3)
 
         bill_number = Label(f1, text="Bill Number", font=("times new roman", 18, "bold"),
                             bg=bg_color, fg="white").grid(row=0, column=4, padx=20, pady=5)
-        bill_text = Entry(f1, width=16, font=("arial", 15), bd=7, relief=SUNKEN).grid(row=0, column=5)
+        bill_text = Entry(f1, width=16, textvariable=self.var.bill_number, font=("arial", 15), bd=7,
+                          relief=SUNKEN).grid(row=0, column=5)
 
         search_button = Button(f1, width=10, bg="lightyellow", text="Search", font=("times new roman", 18, "bold"),
                                bd=7, relief=SUNKEN).grid(row=0, column=6, padx=20)
@@ -42,32 +47,32 @@ class Bill_APP:
 
         b_shop = Label(f2, text="Bath Shop", font=("times new roman", 15, "bold"),
                        bg=bg_color, fg="lightgreen").grid(row=0, column=0, padx=20, pady=5, sticky="w")
-        b_shop_text = Entry(f2, width=10, font=("arial", 15), bd=7,
+        b_shop_text = Entry(f2, width=10, textvariable=self.var.soap, font=("arial", 15), bd=7,
                             relief=SUNKEN).grid(row=0, column=1, padx=20, pady=10, sticky="w")
 
         f_cream = Label(f2, text="Face Cream", font=("times new roman", 15, "bold"),
                         bg=bg_color, fg="lightgreen").grid(row=1, column=0, padx=20, pady=5, sticky="w")
-        f_cream_text = Entry(f2, width=10, font=("arial", 15), bd=7,
+        f_cream_text = Entry(f2, width=10, textvariable=self.var.face_cream, font=("arial", 15), bd=7,
                              relief=SUNKEN).grid(row=1, column=1, padx=20, pady=10, sticky="w")
 
         f_wash = Label(f2, text="Face wash", font=("times new roman", 15, "bold"),
                        bg=bg_color, fg="lightgreen").grid(row=2, column=0, padx=20, pady=5, sticky="w")
-        f_wash_text = Entry(f2, width=10, font=("arial", 15), bd=7,
+        f_wash_text = Entry(f2, width=10, textvariable=self.var.face_wash, font=("arial", 15), bd=7,
                             relief=SUNKEN).grid(row=2, column=1, padx=20, pady=10)
 
         h_spray = Label(f2, text="Hair Spray", font=("times new roman", 15, "bold"),
                         bg=bg_color, fg="lightgreen").grid(row=3, column=0, padx=20, pady=5, sticky="w")
-        h_spray_text = Entry(f2, width=10, font=("arial", 15), bd=7,
+        h_spray_text = Entry(f2, width=10, textvariable=self.var.hair_spray, font=("arial", 15), bd=7,
                              relief=SUNKEN).grid(row=3, column=1, padx=20, pady=10)
 
         h_gel = Label(f2, text="Hair Gel", font=("times new roman", 15, "bold"),
                       bg=bg_color, fg="lightgreen").grid(row=4, column=0, padx=20, pady=5, sticky="w")
-        h_gel_text = Entry(f2, width=10, font=("arial", 15), bd=7,
+        h_gel_text = Entry(f2, width=10, textvariable=self.var.hair_gel, font=("arial", 15), bd=7,
                            relief=SUNKEN).grid(row=4, column=1, padx=20, pady=10)
 
         b_lotion = Label(f2, text="Body Lotion", font=("times new roman", 15, "bold"),
                          bg=bg_color, fg="lightgreen").grid(row=5, column=0, padx=20, pady=5, sticky="w")
-        b_lotion_text = Entry(f2, width=10, font=("arial", 15), bd=7,
+        b_lotion_text = Entry(f2, width=10, textvariable=self.var.body_lotion, font=("arial", 15), bd=7,
                               relief=SUNKEN).grid(row=5, column=1, padx=20, pady=10)
 
         # ===========================Grocery===========================================================
@@ -78,32 +83,32 @@ class Bill_APP:
         f3.place(x=340, y=180, height=380)
         rice = Label(f3, text="Rice", font=("times new roman", 15, "bold"),
                      bg=bg_color, fg="lightgreen").grid(row=0, column=0, padx=20, pady=5, sticky="w")
-        rice_text = Entry(f3, width=10, font=("arial", 15), bd=7,
+        rice_text = Entry(f3, width=10, textvariable=self.var.rice, font=("arial", 15), bd=7,
                           relief=SUNKEN).grid(row=0, column=1, padx=30, pady=10)
 
         f_oil = Label(f3, text="Food Oil", font=("times new roman", 15, "bold"),
                       bg=bg_color, fg="lightgreen").grid(row=1, column=0, padx=20, pady=5, sticky="w")
-        f_oil_text = Entry(f3, width=10, font=("arial", 15), bd=7,
+        f_oil_text = Entry(f3, width=10, textvariable=self.var.food_oil, font=("arial", 15), bd=7,
                            relief=SUNKEN).grid(row=1, column=1, padx=30, pady=10)
 
         daal = Label(f3, text="Daal", font=("times new roman", 15, "bold"),
                      bg=bg_color, fg="lightgreen").grid(row=2, column=0, padx=20, pady=5, sticky="w")
-        daal_text = Entry(f3, width=10, font=("arial", 15), bd=7,
+        daal_text = Entry(f3, width=10, textvariable=self.var.daal, font=("arial", 15), bd=7,
                           relief=SUNKEN).grid(row=2, column=1, padx=30, pady=10)
 
         wheat = Label(f3, text="Wheat", font=("times new roman", 15, "bold"),
                       bg=bg_color, fg="lightgreen").grid(row=3, column=0, padx=20, pady=5, sticky="w")
-        wheat_text = Entry(f3, width=10, font=("arial", 15), bd=7,
+        wheat_text = Entry(f3, width=10, textvariable=self.var.wheat, font=("arial", 15), bd=7,
                            relief=SUNKEN).grid(row=3, column=1, padx=30, pady=10)
 
         sugar = Label(f3, text="Sugar", font=("times new roman", 15, "bold"),
                       bg=bg_color, fg="lightgreen").grid(row=4, column=0, padx=20, pady=5, sticky="w")
-        sugar_text = Entry(f3, width=10, font=("arial", 15), bd=7,
+        sugar_text = Entry(f3, width=10, textvariable=self.var.sugar, font=("arial", 15), bd=7,
                            relief=SUNKEN).grid(row=4, column=1, padx=30, pady=10)
 
         tea = Label(f3, text="Tea", font=("times new roman", 15, "bold"),
                     bg=bg_color, fg="lightgreen").grid(row=5, column=0, padx=20, pady=5, sticky="w")
-        tea_text = Entry(f3, width=10, font=("arial", 15), bd=7,
+        tea_text = Entry(f3, width=10, textvariable=self.var.tea, font=("arial", 15), bd=7,
                          relief=SUNKEN).grid(row=5, column=1, padx=30, pady=10)
 
         # =======================================cold drinks============================================
@@ -114,32 +119,32 @@ class Bill_APP:
         f4.place(x=670, y=180, height=380)
         maza = Label(f4, text="Maza", font=("times new roman", 15, "bold"),
                      bg=bg_color, fg="lightgreen").grid(row=0, column=0, padx=20, pady=5, sticky="w")
-        maza_text = Entry(f4, width=10, font=("arial", 15), bd=7,
+        maza_text = Entry(f4, width=10, textvariable=self.var.maza, font=("arial", 15), bd=7,
                           relief=SUNKEN).grid(row=0, column=1, padx=30, pady=10)
 
         c_cola = Label(f4, text="Coco cola", font=("times new roman", 15, "bold"),
                        bg=bg_color, fg="lightgreen").grid(row=1, column=0, padx=20, pady=5, sticky="w")
-        c_cola_text = Entry(f4, width=10, font=("arial", 15), bd=7,
+        c_cola_text = Entry(f4, width=10, textvariable=self.var.coco_cola, font=("arial", 15), bd=7,
                             relief=SUNKEN).grid(row=1, column=1, padx=30, pady=10)
 
         frooti = Label(f4, text="Frooti", font=("times new roman", 15, "bold"),
                        bg=bg_color, fg="lightgreen").grid(row=2, column=0, padx=20, pady=5, sticky="w")
-        frooti_text = Entry(f4, width=10, font=("arial", 15), bd=7,
+        frooti_text = Entry(f4, width=10, textvariable=self.var.frooti, font=("arial", 15), bd=7,
                             relief=SUNKEN).grid(row=2, column=1, padx=30, pady=10)
 
         t_up = Label(f4, text="Thumbs Up", font=("times new roman", 15, "bold"),
                      bg=bg_color, fg="lightgreen").grid(row=3, column=0, padx=20, pady=5, sticky="w")
-        t_up_text = Entry(f4, width=10, font=("arial", 15), bd=7,
+        t_up_text = Entry(f4, width=10, textvariable=self.var.thumbs_up, font=("arial", 15), bd=7,
                           relief=SUNKEN).grid(row=3, column=1, padx=30, pady=10)
 
         limca = Label(f4, text="Limca", font=("times new roman", 15, "bold"),
                       bg=bg_color, fg="lightgreen").grid(row=4, column=0, padx=20, pady=5, sticky="w")
-        limca_text = Entry(f4, width=10, font=("arial", 15), bd=7,
+        limca_text = Entry(f4, width=10, textvariable=self.var.limca, font=("arial", 15), bd=7,
                            relief=SUNKEN).grid(row=4, column=1, padx=30, pady=10)
 
         sprite = Label(f4, text="Sprite", font=("times new roman", 15, "bold"),
                        bg=bg_color, fg="lightgreen").grid(row=5, column=0, padx=20, pady=5, sticky="w")
-        sprite_text = Entry(f4, width=10, font=("arial", 15), bd=7,
+        sprite_text = Entry(f4, width=10, textvariable=self.var.sprite, font=("arial", 15), bd=7,
                             relief=SUNKEN).grid(row=5, column=1, padx=30, pady=10)
 
         # ======================Bill area==================================================================
@@ -163,30 +168,30 @@ class Bill_APP:
 
         t_c_prize = Label(f6, text="Total Cosmetics Prize", font=("times new roman", 13, "bold"),
                           bg=bg_color, fg="lightgreen").grid(row=0, column=0, padx=20, sticky="w")
-        t_c_prize_text = Entry(f6, width=10, font=("arial", 15), bd=7,
+        t_c_prize_text = Entry(f6, width=10, textvariable=self.var.total_cosmetic_price, font=("arial", 15), bd=7,
                                relief=SUNKEN).grid(row=0, column=1, padx=30)
         t_g_prize = Label(f6, text="Total Grocery Prize", font=("times new roman", 13, "bold"),
                           bg=bg_color, fg="lightgreen").grid(row=1, column=0, padx=20, sticky="w")
-        t_g_prize_text = Entry(f6, width=10, font=("arial", 15), bd=7,
+        t_g_prize_text = Entry(f6, width=10, textvariable=self.var.total_grocery_price, font=("arial", 15), bd=7,
                                relief=SUNKEN).grid(row=1, column=1, padx=30)
         t_cd_prize = Label(f6, text="Total Cold Drink Prize", font=("times new roman", 13, "bold"),
                            bg=bg_color, fg="lightgreen").grid(row=2, column=0, padx=20, sticky="w")
-        t_cd_prize_text = Entry(f6, width=10, font=("arial", 15), bd=7,
+        t_cd_prize_text = Entry(f6, width=10, textvariable=self.var.total_cold_drinks_price, font=("arial", 15), bd=7,
                                 relief=SUNKEN).grid(row=2, column=1, padx=30)
 
         # ================================================tax==========================================
 
         c_tax = Label(f6, text="Cosmetics Tax", font=("times new roman", 13, "bold"),
                       bg=bg_color, fg="lightgreen").grid(row=0, column=2, padx=20, sticky="w")
-        c_tax_text = Entry(f6, width=10, font=("arial", 15), bd=7,
+        c_tax_text = Entry(f6, width=10, textvariable=self.var.cosmetic_tax, font=("arial", 15), bd=7,
                            relief=SUNKEN).grid(row=0, column=3, padx=30)
         g_tax = Label(f6, text="Grocery Tax", font=("times new roman", 13, "bold"),
                       bg=bg_color, fg="lightgreen").grid(row=1, column=2, padx=20, sticky="w")
-        g_tax_text = Entry(f6, width=10, font=("arial", 15), bd=7,
+        g_tax_text = Entry(f6, width=10, textvariable=self.var.grocery_tax, font=("arial", 15), bd=7,
                            relief=SUNKEN).grid(row=1, column=3, padx=30)
         cd_tax = Label(f6, text="Cold Drink Tax", font=("times new roman", 13, "bold"),
                        bg=bg_color, fg="lightgreen").grid(row=2, column=2, padx=20, sticky="w")
-        cd_tax_text = Entry(f6, width=10, font=("arial", 15), bd=7,
+        cd_tax_text = Entry(f6, width=10, textvariable=self.var.cold_drinks_tax, font=("arial", 15), bd=7,
                             relief=SUNKEN).grid(row=2, column=3, padx=30)
 
         # ======================================BUTTONS====================================================
@@ -204,5 +209,6 @@ class Bill_APP:
 
 
 root = Tk()
-obj = Bill_APP(root)
+var = Variable()
+obj = Bill_APP(root, var)
 root.mainloop()
